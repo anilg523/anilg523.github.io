@@ -6,34 +6,40 @@
 @import url('https://fonts.googleapis.com/css2?family=Boldonse&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Winky+Sans:ital,wght@1,300..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Bungee+Tint&display=swap');
-
 @keyframes moveUp {
-  from { transform: translateY(50vh); }
-  to { transform: translateY(0); }
-}
-
+      0% { transform: translateY(50vh); }
+      100% { transform: translateY(0); }
+    }
 body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-}
-
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+  }
 #hide {
-  text-align: center;
-}
-
-#head, #head2, .dis {
-  margin: 0;
-}
-
+    text-align: center;}
+#head {font-family: 'boldonse';
+      margin: 0;
+      animation-name: moveUp;
+      animation-duration: 2s;
+      animation-timing-function: ease-in-out;}
+#head2 {font-family: 'boldonse';
+        margin: 1px;
+        font-size: 40px;}
+.dis {font-family: "Winky Sans";
+      margin: 4px;
+      font-size: 25px;}
 #Button {
   background-color: white;
   border: 2px solid black;
   color: black;
   padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
   display: none;
   font-size: 20px;
+  margin: 20px;
   cursor: pointer;
   border-radius: 10px;
   font-weight: bold;
@@ -51,46 +57,84 @@ body {
 }
 
 @keyframes spin {
-  to { transform: rotate(360deg); }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 #sec {
   display: none;
   font-family: "Bungee Tint";
-  font-size: 100px;
+  font-size: 100px; 
 }
 </style>
 <script>
+
 var txt = "Welcome To";
-setInterval((el, str) => (str.length ? el.innerHTML += str[0] : clearInterval(myInterval)), 100,
-document.getElementById("head"), txt);
-setTimeout(() => {
-  txt = "MathSeek AI";
-  setInterval((el, str) => (str.length ? el.innerHTML += str[0] : clearInterval(myInterval)), 100,
-document.getElementById("head2"), txt);
-}, 2000);
-setTimeout(() => {
-  txt = "This is an AI teacher made by Sreejith.";
-  setInterval((el, str) => (str.length ? el.innerHTML += str[0] : clearInterval(myInterval)), 50,
-document.getElementById("para"), txt);
-}, 3980);
-setTimeout(() => {
-  txt = "This AI will help you to understand and learn Math Easily.";
-  setInterval((el, str) => (str.length ? el.innerHTML += str[0] : clearInterval(myInterval)), 50,
-document.getElementById("para1"), txt);
-}, 5800);
-setTimeout(() => {
-  txt = "Chat to MathSeek Right NOW!";
-  setInterval((el, str) => (str.length ? el.innerHTML += str[0] : clearInterval(myInterval)), 50,
-document.getElementById("para2"), txt);
-}, 8800);
-setTimeout(() => document.getElementById("Button").style.display = "inline-block", 10700);
+var i = 0;
+var myInterval = setInterval(function() {
+document.getElementById("head").innerHTML += txt[i];
+++i;
+if (i >= txt.length) {
+clearInterval(myInterval); // Stops animation at the end
+}
+}, 100);
+
+setTimeout(function() {
+var txt = "MathSeek AI";
+var i = 0;
+var myInterval = setInterval(function() {
+document.getElementById("head2").innerHTML += txt[i];
+++i;
+if (i >= txt.length) {
+clearInterval(myInterval); // Stops animation at the end
+}
+}, 100);}, 2000);
+
+
+setTimeout(function() {
+var txt = "This is an AI teacher made by Sreejith.";
+var i = 0;
+var myInterval = setInterval(function() {
+document.getElementById("para").innerHTML += txt[i];
+++i;
+if (i >= txt.length) {
+clearInterval(myInterval); // Stops animation at the end
+}
+}, 50);}, 3980);
+
+setTimeout(function() {
+var txt = "This AI will help you to understand and learn Math Easily.";
+var i = 0;
+var myInterval = setInterval(function() {
+document.getElementById("para1").innerHTML += txt[i];
+++i;
+if (i >= txt.length) {
+clearInterval(myInterval); // Stops animation at the end
+}
+}, 50);}, 5800);
+
+setTimeout(function() {
+var txt = "Chat to MathSeek Right NOW!";
+var i = 0;
+var myInterval = setInterval(function() {
+document.getElementById("para2").innerHTML += txt[i];
+++i;
+if (i >= txt.length) {
+clearInterval(myInterval); // Stops animation at the end
+}
+}, 50);}, 8800);
+
+setTimeout(function() {
+    var button = document.getElementById("Button");
+    button.style.display = "inline-block"; // Or "block" depending on how you want it to behave
+  }, 10700);
 
 function start() {
-  document.getElementById("hide").style.display = "none";
-  document.getElementById("spinner").style.display = "block";
-  setTimeout(() => {
-    document.getElementById("spinner").style.display = "none";
+document.getElementById("hide").style.display = "none";
+document.getElementById("spinner").style.display = "block";
+setTimeout(function() {
+    document.getElementById("spinner").style.display = "none"
     document.getElementById("sec").style.display = "block";
   }, 5000);
 }
@@ -108,6 +152,7 @@ function start() {
 <button id="Button" onclick="start()">Try Now!</button>
 </div>
 <h1 id="sec">April fool</h1>
+
 
 </body>
 </html>
